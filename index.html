@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Sim - Cozy Dog Care</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Main Menu Screen -->
+    <div id="main-menu" class="screen active">
+        <div class="menu-container">
+            <div class="game-logo">
+                <i class="fas fa-paw"></i>
+                <h1>Pet Sim</h1>
+                <p>Cozy Dog Care Adventure</p>
+            </div>
+            
+            <div class="menu-buttons">
+                <button class="menu-btn primary" onclick="showScreen('saved-files')">
+                    <i class="fas fa-play"></i>
+                    Start Game
+                </button>
+                <button class="menu-btn secondary" onclick="showScreen('settings')">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+                <button class="menu-btn secondary" onclick="showAbout()">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </button>
+            </div>
+            
+            <div class="menu-footer">
+                <p>&copy; 2024 Pet Sim. Made with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Files Screen -->
+    <div id="saved-files" class="screen">
+        <div class="menu-container">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('main-menu')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Select Save File</h2>
+            </div>
+            
+            <div class="save-files-container">
+                <div class="save-file-card" onclick="startNewGame()">
+                    <div class="save-file-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="save-file-info">
+                        <h3>New Game</h3>
+                        <p>Start a new adventure</p>
+                    </div>
+                </div>
+                
+                <div class="save-file-card" onclick="loadGame(1)">
+                    <div class="save-file-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="save-file-info">
+                        <h3>Save File 1</h3>
+                        <p class="save-date">Last played: Never</p>
+                        <div class="save-stats">
+                            <span><i class="fas fa-coins"></i> 0</span>
+                            <span><i class="fas fa-paw"></i> 0 dogs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="save-file-card" onclick="loadGame(2)">
+                    <div class="save-file-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="save-file-info">
+                        <h3>Save File 2</h3>
+                        <p class="save-date">Last played: Never</p>
+                        <div class="save-stats">
+                            <span><i class="fas fa-coins"></i> 0</span>
+                            <span><i class="fas fa-paw"></i> 0 dogs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="save-file-card" onclick="loadGame(3)">
+                    <div class="save-file-icon">
+                        <i class="fas fa-save"></i>
+                    </div>
+                    <div class="save-file-info">
+                        <h3>Save File 3</h3>
+                        <p class="save-date">Last played: Never</p>
+                        <div class="save-stats">
+                            <span><i class="fas fa-coins"></i> 0</span>
+                            <span><i class="fas fa-paw"></i> 0 dogs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settings" class="screen">
+        <div class="menu-container">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('main-menu')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Settings</h2>
+            </div>
+            
+            <div class="settings-container">
+                <div class="setting-group">
+                    <h3><i class="fas fa-volume-up"></i> Audio</h3>
+                    <div class="setting-item">
+                        <label>Master Volume</label>
+                        <input type="range" id="master-volume" min="0" max="100" value="70">
+                        <span class="volume-value">70%</span>
+                    </div>
+                    <div class="setting-item">
+                        <label>Sound Effects</label>
+                        <label class="switch">
+                            <input type="checkbox" id="sfx-enabled" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>Background Music</label>
+                        <label class="switch">
+                            <input type="checkbox" id="music-enabled">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3><i class="fas fa-desktop"></i> Display</h3>
+                    <div class="setting-item">
+                        <label>Graphics Quality</label>
+                        <select id="graphics-quality">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Screen Shake</label>
+                        <label class="switch">
+                            <input type="checkbox" id="screen-shake" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3><i class="fas fa-gamepad"></i> Gameplay</h3>
+                    <div class="setting-item">
+                        <label>Auto-Save</label>
+                        <label class="switch">
+                            <input type="checkbox" id="auto-save" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>Tutorial Hints</label>
+                        <label class="switch">
+                            <input type="checkbox" id="tutorial-hints" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <i class="fas fa-paw loading-paw"></i>
+                <h1>Pet Sim</h1>
+            </div>
+            
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="loading-text">Loading your cozy adventure...</p>
+            </div>
+            
+            <div class="loading-tips">
+                <p><i class="fas fa-lightbulb"></i> <span id="loading-tip">Tip: Play with your dogs daily to keep them happy!</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div id="game-container">
+            <div id="ui-overlay">
+                <div id="stats-panel">
+                    <h2>Your Dogs</h2>
+                    <div id="dogs-list"></div>
+                </div>
+                <div id="actions-panel">
+                    <h2>Actions</h2>
+                    <div id="action-buttons"></div>
+                </div>
+            </div>
+            <div id="threejs-canvas"></div>
+        </div>
+        
+        <!-- In-game menu button -->
+        <button id="ingame-menu-btn" onclick="pauseGame()">
+            <i class="fas fa-pause"></i>
+        </button>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pause-menu" class="overlay-menu">
+        <div class="overlay-content">
+            <h2>Game Paused</h2>
+            <div class="overlay-buttons">
+                <button class="menu-btn primary" onclick="resumeGame()">
+                    <i class="fas fa-play"></i>
+                    Resume
+                </button>
+                <button class="menu-btn secondary" onclick="saveCurrentGame()">
+                    <i class="fas fa-save"></i>
+                    Save Game
+                </button>
+                <button class="menu-btn secondary" onclick="showScreen('main-menu')">
+                    <i class="fas fa-home"></i>
+                    Main Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
